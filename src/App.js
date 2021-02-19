@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+//Hooks
+import { useState } from 'react';
+
+//Components
+import Form from './components/Form';
+import Foods from './components/Foods';
 
 function App() {
+  //States
+  const [people, setPeople] = useState({ adults: 0, children: 0 });
+
+  //Calculate
+  const onCalc = (people) => {
+    setPeople(people);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Calculadora de Churrrrrrasco</h1>
+      <Form className="form" onCalc={onCalc} />
+      <Foods className="foods" people={people} />
+
     </div>
   );
 }
